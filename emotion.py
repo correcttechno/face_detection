@@ -11,8 +11,9 @@ def detectEmotion(frame):
         face_roi = rgb_frame[y:y + h, x:x + w]
         result = DeepFace.analyze(face_roi, actions=['emotion'], enforce_detection=False)
         emotion = result[0]['dominant_emotion']
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
-        cv2.putText(frame, emotion, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 255), 2)
-    cv2.imshow('Real-time Emotion Detection', frame)
+        return emotion
+        #cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
+        #cv2.putText(frame, emotion, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 255), 2)
+    #cv2.imshow('Real-time Emotion Detection', frame)
 
 

@@ -14,6 +14,7 @@ def detectAges(frame):
     blob = cv2.dnn.blobFromImage(frame, 1.0, (300, 300), [104, 117, 123], True, False)
     face_net.setInput(blob)
     detections = face_net.forward()
+    
 
     for i in range(detections.shape[2]):
         confidence = detections[0, 0, i, 2]
@@ -27,11 +28,13 @@ def detectAges(frame):
                 age_preds = age_net.forward()
                 age = AGE_GROUPS[age_preds[0].argmax()]
                 label = f"Age: {age}"
-                cv2.rectangle(frame, (startX, startY), (endX, endY), (255, 0, 0), 2)
-                cv2.putText(frame, label, (startX, startY - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 0, 0), 2)
-            cv2.imshow("Age Estimation", frame)
+                #cv2.rectangle(frame, (startX, startY), (endX, endY), (255, 0, 0), 2)
+                #cv2.putText(frame, label, (startX, startY - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 0, 0), 2)
+                #cv2.imshow("Age Estimation", frame)
+                return label
+           
 
-    return frame
+    return False
 
     
 
