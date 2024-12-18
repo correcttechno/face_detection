@@ -27,7 +27,7 @@ def detectAges(frame):
                 age_net.setInput(blob)
                 age_preds = age_net.forward()
                 age = AGE_GROUPS[age_preds[0].argmax()]
-                label = f"Age: {age}"
+                label =age
                 #cv2.rectangle(frame, (startX, startY), (endX, endY), (255, 0, 0), 2)
                 #cv2.putText(frame, label, (startX, startY - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 0, 0), 2)
                 #cv2.imshow("Age Estimation", frame)

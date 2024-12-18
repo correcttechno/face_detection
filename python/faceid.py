@@ -61,12 +61,12 @@ def faceIdCallback(frame):
                 known_names.append(name)
                 file_path = os.path.join(known_faces_dir, name + file_extension)
                 cv2.imwrite(file_path, cropped_face)
-                return name
+                return [name,False]
 
             else:
                 name = known_names[best_match_index]
                 #cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 1)
-                return name
+                return [name,True]
                 #cv2.rectangle(frame, (left, bottom - 20), (right, bottom), (0, 255, 0), cv2.FILLED)
                 #font = cv2.FONT_HERSHEY_DUPLEX
                 #cv2.putText(frame, name, (left + 6, bottom - 6), font, 0.5, (255, 255, 255), 1)
